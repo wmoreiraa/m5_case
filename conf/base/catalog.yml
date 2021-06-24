@@ -2,3 +2,11 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/04_user_guide/04_data_catalog.html
+#
+
+peru:
+        type: pandas.CSVDataSet
+        filepath: data/01_raw/peru_hist_2006_2021.csv
+lima:
+        type: pandas.CSVDataSet
+        filepath: data/01_raw/lima_tempo_2006_2021.csv
