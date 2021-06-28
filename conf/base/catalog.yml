@@ -10,3 +10,13 @@ peru:
 lima:
         type: pandas.CSVDataSet
         filepath: data/01_raw/lima_tempo_2006_2021.csv
+
+lima_clean:
+        type: pandas.CSVDataSet
+        filepath: data/02_intermediate/lima_clean.csv
+        load_args:
+                parse_dates: ['DATETIME']
+                index_col: 'DATETIME'                
+        save_args:
+                index: True
+        

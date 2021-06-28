@@ -1,1 +1,1 @@
-from .pipeline import clean_date_hour
+from .pipeline import clean_data_pipeline
