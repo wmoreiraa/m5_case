@@ -3,7 +3,8 @@ from kedro.pipeline import Pipeline, node
 from m5_case.nodes.clean_data import (
         clean_date_hour,
         clean_nulls,
-        select_date
+        select_date,
+        setindex_peru
         )
 
 def clean_data_pipeline(**kwargs):
@@ -28,7 +29,22 @@ def clean_data_pipeline(**kwargs):
                 inputs = ["lima_nulls", "params:start_date"],
                 outputs = "lima_clean",
                 tags = ["clean_data"],
-                name = "select_date"
+                name = "select_date_lima"
+            ),
+            node(
+                func = setindex_peru,
+                inputs = "peru",
+                outputs = "peru_v1",
+                tags = ["clean_data"],
+                name = "setindex_peru"
+            ),
+            node(
+                func = select_date,
+                inputs = ["peru_v1", "params:start_date"],
+                outputs = "peru_clean",
+                tags = ["clean_data"],
+                name = "select_date_peru"
+
             )
         ]
     )

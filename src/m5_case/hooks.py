@@ -35,12 +35,13 @@ from kedro.io import DataCatalog
 from kedro.pipeline import Pipeline
 from kedro.versioning import Journal
 
-from m5_case.pipelines import clean_data_pipeline
+from m5_case.pipelines import (
+    clean_data_pipeline,
+    make_dataset_pipeline
+)
 
 def complete_pipeline():
-    return Pipeline([
-        clean_data_pipeline()
-    ])
+    return Pipeline([clean_data_pipeline() + make_dataset_pipeline()])
 
 class ProjectHooks:
     @hook_impl
@@ -52,7 +53,10 @@ class ProjectHooks:
 
         """
 
-        return {"__default__": complete_pipeline()}
+        return {
+            "clean_pipe": clean_data_pipeline(),
+            "feature_pipe": make_dataset_pipeline(),
+            "__default__": complete_pipeline()}
 
     @hook_impl
     def register_config_loader(self, conf_paths: Iterable[str]) -> ConfigLoader:

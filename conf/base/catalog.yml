@@ -19,4 +19,23 @@ lima_clean:
                 index_col: 'DATETIME'                
         save_args:
                 index: True
+
+peru_clean:
+        type: pandas.CSVDataSet
+        filepath: data/02_intermediate/peru_clean.csv
+        load_args:
+                parse_dates: ['date']
+                index_col: ['date']
+        save_args:
+                index: True
+
+dataset_covid:
+        type: pandas.CSVDataSet
+        filepath: data/02_intermediate/dataset_covid.csv
+        load_args:
+                parse_dates: ['date']
+                index_col: ['date']
+        save_args:
+                index: True
+        
         
