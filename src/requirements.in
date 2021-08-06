@@ -16,3 +16,6 @@ pandas
 numpy 
 kedro[pandas.CSVDataSet,pandas.ExcelDataSet]==0.17.0
 seaborn
+fastapi
+pydantic
+sqlalchemy
